@@ -1,0 +1,1192 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Purley Dene — Guest Guide</title>
+    <meta
+      name="description"
+      content="Guest guide for Purley Dene: emergencies, waste & recycling, house information, and things to do."
+    />
+
+    <style>
+      :root {
+        --bg: #ffffff;
+        --ink: #111827;
+        --muted: #4b5563;
+        --line: #e5e7eb;
+        --panel: #f9fafb;
+        --callout: #fff7ed;
+        --danger: #fef2f2;
+        --accent: #0f766e;
+        --danger-ink: #991b1b;
+        --danger-border: #fecaca;
+        --callout-border: #fed7aa;
+        --shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 6px 24px rgba(0, 0, 0, 0.06);
+        --radius: 14px;
+      }
+
+      /* Screen vs print visibility helpers */
+      .print-only {
+        display: none !important;
+      }
+      .screen-only {
+        display: block !important;
+      }
+
+      @media print {
+        .screen-only {
+          display: none !important;
+        }
+        .print-only {
+          display: block !important;
+        }
+
+        /* If a print-only element needs grid layout in print */
+        .print-only.qr-callout {
+          display: grid !important;
+        }
+
+        /* Optional: keep badges as inline-flex in print (nicer) */
+        .print-only.badge {
+          display: inline-flex !important;
+        }
+      }
+
+      html,
+      body {
+        background: var(--bg);
+        color: var(--ink);
+      }
+      body {
+        margin: 0;
+        font-family:
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Arial,
+          sans-serif;
+        line-height: 1.6;
+      }
+
+      .wrap {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 24px 16px 64px;
+      }
+
+      header {
+        display: grid;
+        gap: 10px;
+        padding: 18px 18px 14px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: linear-gradient(180deg, #ffffff, #fbfbfb);
+        box-shadow: var(--shadow);
+      }
+
+      .title-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      h1 {
+        font-size: 28px;
+        line-height: 1.15;
+        margin: 0;
+        letter-spacing: -0.02em;
+      }
+
+      .subtitle {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid var(--line);
+        background: #fff;
+        border-radius: 999px;
+        padding: 6px 10px;
+        font-size: 12px;
+        color: var(--muted);
+        white-space: nowrap;
+      }
+
+      .badge svg {
+        width: 14px;
+        height: 14px;
+      }
+
+      nav.toc {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--line);
+        margin: 18px -16px 0;
+        padding: 10px 16px;
+      }
+
+      .toc-inner {
+        max-width: 880px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .toc a {
+        text-decoration: none;
+        color: var(--ink);
+        border: 1px solid var(--line);
+        background: #fff;
+        padding: 8px 10px;
+        border-radius: 999px;
+        font-size: 13px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .toc a:hover {
+        border-color: #cbd5e1;
+      }
+
+      .toc .right {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+
+      .btn {
+        border: 1px solid var(--line);
+        background: var(--panel);
+        color: var(--ink);
+        border-radius: 999px;
+        padding: 8px 12px;
+        font-size: 13px;
+        cursor: pointer;
+      }
+
+      main {
+        margin-top: 18px;
+      }
+
+      section {
+        margin-top: 22px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 18px 18px 16px;
+        background: #fff;
+        box-shadow: var(--shadow);
+      }
+
+      section > h2 {
+        margin: 0 0 8px;
+        font-size: 20px;
+        letter-spacing: -0.01em;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .icon {
+        width: 22px;
+        height: 22px;
+        display: inline-block;
+      }
+
+      h3 {
+        margin: 18px 0 6px;
+        font-size: 16px;
+      }
+
+      p {
+        margin: 8px 0;
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+
+      .grid {
+        display: grid;
+        gap: 12px;
+      }
+
+      @media (min-width: 860px) {
+        .grid.two {
+          grid-template-columns: 1fr 1fr;
+        }
+        .grid.four {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+      .card {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--panel);
+        padding: 14px;
+      }
+
+      .callout {
+        border: 1px solid var(--callout-border);
+        background: var(--callout);
+        border-radius: var(--radius);
+        padding: 14px;
+      }
+
+      .danger {
+        border: 1px solid var(--danger-border);
+        background: var(--danger);
+        border-radius: var(--radius);
+        padding: 14px;
+      }
+
+      .danger strong {
+        color: var(--danger-ink);
+      }
+
+      .list {
+        margin: 8px 0 0;
+        padding-left: 20px;
+      }
+
+      .kv {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .kv .row {
+        display: grid;
+        grid-template-columns: 160px 1fr;
+        gap: 10px;
+        align-items: start;
+        border-bottom: 1px dashed #e5e7eb;
+        padding-bottom: 8px;
+      }
+
+      .kv .key {
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .kv .val {
+        font-weight: 600;
+      }
+
+      .small {
+        font-size: 13px;
+      }
+
+      a {
+        color: var(--accent);
+      }
+      a:hover {
+        text-decoration: none;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+        font-size: 14px;
+      }
+      th,
+      td {
+        border: 1px solid var(--line);
+        padding: 10px;
+        vertical-align: top;
+      }
+      th {
+        background: #f3f4f6;
+        text-align: left;
+      }
+      /* qr code callout */
+      .qr-callout {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 16px;
+        align-items: center;
+      }
+
+      .qr-img {
+        width: 100px;
+        height: auto;
+      }
+      .tide-panel {
+        display: grid;
+        gap: 10px;
+      }
+
+      .tide-link {
+        display: inline-block;
+        margin-top: 6px;
+        padding: 10px 14px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: #ffffff;
+        color: var(--accent);
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        width: fit-content;
+      }
+
+      .tide-link:hover {
+        background: #f9fafb;
+      }
+
+      .media-block {
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        gap: 16px;
+        align-items: start;
+        margin-top: 8px;
+      }
+
+      .media-img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        border: 1px solid #e5e7eb;
+      }
+
+      /* Stack image above text on narrow screens */
+      @media (max-width: 600px) {
+        .media-block {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Print tweaks */
+      @media print {
+        .media-block {
+          grid-template-columns: 180px 1fr;
+          gap: 12px;
+        }
+      }
+
+      /* Bin icons */
+      .bin-card {
+        text-align: center;
+      }
+      .bin-card img {
+        width: 84px;
+        height: auto;
+        display: inline-block;
+        margin: 6px auto 8px;
+      }
+      .bin-card .label {
+        font-weight: 700;
+        font-size: 13px;
+        margin: 0;
+      }
+      .bin-card .hint {
+        color: var(--muted);
+        font-size: 12px;
+        margin: 2px 0 0;
+      }
+
+      footer {
+        margin-top: 22px;
+        color: var(--muted);
+        font-size: 13px;
+        text-align: center;
+      }
+
+      /* ---------- Print layout ---------- */
+      @media print {
+        :root {
+          --shadow: none;
+        }
+        body {
+          font-size: 11pt;
+        }
+        .wrap {
+          max-width: none;
+          padding: 0;
+        }
+        header,
+        section {
+          box-shadow: none;
+          border-radius: 0;
+          border: none;
+          padding: 0;
+        }
+
+        nav.toc,
+        .no-print,
+        .screen-only {
+          display: none !important;
+        }
+        .print-only {
+          display: block !important;
+        }
+
+        header {
+          padding: 0 0 8mm;
+          border-bottom: 1px solid #000;
+          margin-bottom: 6mm;
+        }
+
+        section {
+          margin: 0;
+          padding: 0;
+          break-inside: avoid;
+        }
+
+        section + section {
+          margin-top: 8mm;
+        }
+
+        /* Start each main section on a new page */
+        section.print-break {
+          break-before: page;
+        }
+
+        /* Make links usable on paper */
+        a {
+          color: #000;
+          text-decoration: none;
+        }
+        a[href^="http"]:after {
+          content: " (" attr(href) ")";
+          font-size: 9pt;
+          font-weight: normal;
+        }
+
+        /* Keep headings with following content */
+        h2,
+        h3 {
+          break-after: avoid;
+        }
+
+        /* A4 margins */
+        @page {
+          size: A4;
+          margin: 14mm;
+        }
+
+        /* Bin icons a touch smaller on paper */
+        .bin-card img {
+          width: 70px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="toc no-print" aria-label="Contents">
+      <div class="toc-inner">
+        <div class="left">
+          <a href="#welcome">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-7H10v7H5a1 1 0 0 1-1-1v-9.5Z"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+            Welcome
+          </a>
+
+          <a href="#emergencies">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M12 2 2 22h20L12 2Z"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linejoin="round"
+                />
+                <path d="M12 9v5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                <path
+                  d="M12 17h.01"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </span>
+            Emergencies
+          </a>
+
+          <a href="#waste">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M7 7h10l-1 14H8L7 7Z"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M10 11v6M14 11v6"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </span>
+            Waste & Recycling
+          </a>
+
+          <a href="#house">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M3 11.5 12 4l9 7.5V21a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-9.5Z"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M9 22v-7h6v7"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+            About the House
+          </a>
+
+          <a href="#things">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 1 1 18 0Z"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M12 10.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                />
+              </svg>
+            </span>
+            Things to Do
+          </a>
+        </div>
+
+        <div class="right">
+          <button class="btn" onclick="window.print()" type="button">Print / Save PDF</button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="wrap">
+      <header id="welcome">
+        <div class="title-row">
+          <h1>Purley Dene — Guest Guide</h1>
+
+          <!-- PRINT ONLY -->
+          <span class="badge print-only" title="Keep this guide in the house">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                d="M6 2h9l3 3v17a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1Z"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M15 2v3h3"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linejoin="round"
+              />
+            </svg>
+            Please leave this guide on the kitchen worktop for the next visitors.
+          </span>
+
+          <!-- SCREEN ONLY (optional: keep light) -->
+          <span class="badge screen-only" title="Tip">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                d="M12 2a7 7 0 0 0-4 12.8V18a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-3.2A7 7 0 0 0 12 2Z"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linejoin="round"
+              />
+              <path d="M9.5 22h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+            </svg>
+            Tip: Use the contents buttons to jump to a section.
+          </span>
+        </div>
+
+        <p class="subtitle">
+          This guide is here to help you make your stay as enjoyable as possible. It is divided into
+          four sections.
+        </p>
+
+        <div class="grid two">
+          <div class="card">
+            <strong>Sections</strong>
+            <ol class="list">
+              <li>
+                <a href="#emergencies">Emergencies</a>
+                — evacuation, medical emergencies, or problems around the house.
+              </li>
+              <li>
+                <a href="#waste">Waste and Recycling</a>
+                — what goes where and when it is collected.
+              </li>
+              <li>
+                <a href="#house">About the House</a>
+                — appliances, heating, charging phones and safety features.
+              </li>
+              <li>
+                <a href="#things">Things to Do</a>
+                — the house, the garden, TV, Wi-Fi and going out.
+              </li>
+            </ol>
+          </div>
+
+          <div class="card">
+            <strong>Comments and feedback</strong>
+            <p class="small">Please leave comments in our visitors book in the lounge.</p>
+            <p class="small">
+              Facebook:
+              <a href="https://www.facebook.com/purleydene">facebook.com/purleydene</a>
+            </p>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <!-- SECTION 1 -->
+        <section id="emergencies" class="print-break">
+          <h2>
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M12 2 2 22h20L12 2Z"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linejoin="round"
+                />
+                <path d="M12 9v5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                <path
+                  d="M12 17h.01"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </span>
+            Section 1 — Emergencies
+          </h2>
+
+          <div class="danger">
+            <p style="margin-top: 0">
+              <strong>🚨 IN CASE OF FIRE</strong>
+              <br />
+              Leave the property immediately.
+              <br />
+              Call
+              <strong>999</strong>
+              and ask for the Fire Service.
+            </p>
+
+            <div class="kv">
+              <div class="row">
+                <div class="key">Property address</div>
+                <div class="val">91 Coast Drive, Greatstone, New Romney, Kent, TN28 8NR</div>
+              </div>
+            </div>
+          </div>
+
+          <h3>Fire safety</h3>
+          <p>
+            Smoke, CO and heat detectors are installed and are tested regularly. You can test them
+            yourself by pressing and holding the alarm. All units should sound. Please alert the
+            agent if this is not the case.
+          </p>
+          <p>
+            If alarms sound please investigate the source. If there is a fire, follow the
+            instructions above.
+          </p>
+          <p>There is a fire blanket on the wall beside the door in the kitchen.</p>
+
+          <h3>No smoking, vaping or candles</h3>
+          <p>
+            By law smoking is not allowed in any part of the house. Vaping and candles and naked
+            flames are also banned for safety reasons.
+          </p>
+          <h3>Emergency Lighting</h3>
+
+          <div class="media-block">
+            <img
+              src="emergency-lighting-stairs.jpg"
+              alt="Emergency lighting on the stairs"
+              class="media-img"
+            />
+
+            <p>
+              Emergency lighting is provided on the stairs. In the event of a power cut, the light
+              will illuminate automatically. Please leave it plugged in on charge and do not remove
+              the torch except in an emergency.
+            </p>
+          </div>
+
+          <h3>Medical emergencies</h3>
+          <div class="grid two">
+            <div class="card">
+              <strong>Hospital Accident &amp; Emergency</strong>
+              <p class="small" style="margin-bottom: 0">
+                William Harvey Hospital (Ashford) —
+                <strong>01233 633331</strong>
+                <br />
+                Kennington Road, Willesborough, Ashford, Kent, TN24 0LZ
+                <br />
+                <a href="http://www.ekhuft.nhs.uk/williamharvey">ekhuft.nhs.uk/williamharvey</a>
+              </p>
+            </div>
+
+            <div class="card">
+              <strong>Pharmacies</strong>
+              <p class="small" style="margin-bottom: 0">
+                Well Pharmacy (0.43 mile) —
+                <strong>01797 362997</strong>
+                <br />
+                13 Dunes Road, Greatstone TN28 8SS
+              </p>
+              <p class="small" style="margin-bottom: 0">
+                Allied Pharmacy —
+                <strong>01797 362180</strong>
+                <br />
+                63 High Street, New Romney
+                <br />
+                <a href="http://www.alliedpharmacies.com/">alliedpharmacies.com</a>
+              </p>
+            </div>
+          </div>
+
+          <div class="callout" style="margin-top: 12px">
+            <strong>Local information</strong>
+            <p class="small" style="margin-bottom: 0">
+              The post code of the house is
+              <strong>TN28 8NR</strong>
+              . For waste &amp; recycling collection dates, see the link in Section 2.
+            </p>
+          </div>
+        </section>
+
+        <!-- SECTION 2 -->
+        <section id="waste" class="print-break">
+          <h2>
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M7 7h10l-1 14H8L7 7Z"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M10 11v6M14 11v6"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </span>
+            Section 2 — Waste &amp; Recycling
+          </h2>
+
+          <h3>Waste and recycling collections</h3>
+          <p>
+            Domestic waste and recycling collections occur early on
+            <strong>Monday morning</strong>
+            (often as early as
+            <strong>7.00am</strong>
+            in summer) on a fortnightly rota. Food waste is collected weekly.
+          </p>
+          <p>
+            Please put the relevant bins outside the property boundary on
+            <strong>Sunday evening</strong>
+            in accordance with the local authority calendar. (displayed in the kitchen).
+          </p>
+
+          <div class="callout screen-only">
+            <strong>Live collection dates</strong>
+            <p class="small" style="margin-bottom: 0">
+              Use this link for the current collection schedule:
+              <br />
+              <a
+                href="https://service.folkestone-hythe.gov.uk/webapp/myarea/index.php?uprn=50006243&tab=collections"
+              >
+                Bin collection schedule (live)
+              </a>
+            </p>
+          </div>
+          <div class="callout print-only qr-callout">
+            <div class="qr-text">
+              <strong>Live collection dates</strong>
+              <p class="small" style="margin-bottom: 0">
+                Use this QR code for the current collection schedule.
+              </p>
+            </div>
+
+            <img src="qr-code-bins.svg" alt="Bin collection schedule QR code" class="qr-img" />
+          </div>
+          <h3>Which container for what?</h3>
+          <div class="grid four">
+            <div class="card bin-card">
+              <img src="recycling-bin.png" alt="Recycling bin" />
+              <p class="label">Recycling</p>
+              <p class="hint">Glass, plastics, tins, cartons, clean foil</p>
+            </div>
+            <div class="card bin-card">
+              <img src="general-waste-bin.png" alt="General waste bin" />
+              <p class="label">General waste</p>
+              <p class="hint">Non-recycling + plastic bags, cling film</p>
+            </div>
+            <div class="card bin-card">
+              <img src="food-caddy.png" alt="Food waste caddy" />
+              <p class="label">Food waste</p>
+              <p class="hint">Cooked or uncooked (no plastic bags)</p>
+            </div>
+            <div class="card bin-card">
+              <img src="paper-box.png" alt="Paper and card box" />
+              <p class="label">Paper &amp; card</p>
+              <p class="hint">Clean paper and cardboard</p>
+            </div>
+          </div>
+
+          <table aria-label="Waste and recycling table">
+            <thead>
+              <tr>
+                <th>Contents</th>
+                <th>Collected</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <strong>Food waste</strong>
+                  – cooked or uncooked (no plastic bags or sacks)
+                </td>
+                <td>Every week</td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Non-recycling</strong>
+                  – items that cannot go in any other bins including plastic bags and cling film
+                </td>
+                <td>Non-recycling week (see calendar)</td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Mixed recycling</strong>
+                  – glass bottles and jars; plastic containers; tins and cans; TetraPak cartons;
+                  clean foil
+                </td>
+                <td>Recycling week (see calendar)</td>
+              </tr>
+              <tr>
+                <td><strong>Paper and card</strong></td>
+                <td>Recycling week (see calendar)</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- SECTION 3 -->
+        <section id="house" class="print-break">
+          <h2>
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M3 11.5 12 4l9 7.5V21a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-9.5Z"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M9 22v-7h6v7"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+            Section 3 — About the House
+          </h2>
+
+          <h3>Emergency isolation points</h3>
+          <ul class="list">
+            <li>The gas can be turned off in the cupboard under the stairs.</li>
+            <li>
+              The electricity can be turned off in the lounge cupboard. There are safety trip
+              switches and individual circuit breakers.
+            </li>
+            <li>
+              The mains water supply can be turned off in the bathroom; the tap is situated under
+              the removable box to the left of the toilet.
+            </li>
+          </ul>
+
+          <div class="grid two" style="margin-top: 12px">
+            <div class="card">
+              <strong>Problems with the house</strong>
+              <p class="small">
+                In the event of a problem with the house please contact your letting agent who will
+                do their best to remedy the situation as soon as practical.
+              </p>
+              <p class="small" style="margin-bottom: 0">
+                Hobbs Parker —
+                <strong>01797 366008</strong>
+                <br />
+                Emergencies —
+                <strong>07881 972456</strong>
+              </p>
+            </div>
+
+            <div class="card">
+              <strong>Keys and security</strong>
+              <p class="small" style="margin-bottom: 0">
+                Keys for the back door, the side door of the games room and the barbeque storage box
+                (to be found at the back of the games room) are on the stand on the kitchen worktop.
+                There are also spare window keys on these hooks.
+                <br />
+                <br />
+                Please close and lock all doors and windows when you leave the property.
+              </p>
+            </div>
+          </div>
+
+          <h3>Fire safety</h3>
+          <p>
+            The house is equipped with a smoke detector, Carbon Monoxide detector and a fire
+            blanket. The detectors are located in accordance with manufacturers recommendations; the
+            smoke detector above the stairs and the carbon monoxide detector high on the wall in the
+            kitchen close to the door. The fire blanket is on the wall alongside the fridge.
+          </p>
+
+          <h3>Dishwasher</h3>
+          <p>
+            If you can avoid putting the sharp knives and the non stick pans in the dishwasher we
+            would be grateful. Full instructions are in the appliance guide.
+          </p>
+
+          <h3>Hot water</h3>
+          <p>
+            All hot water is instant and, apart from the shower, comes from the combination boiler.
+          </p>
+
+          <h3>Heating</h3>
+          <p>
+            The thermostat in the living room controls the temperature, adjust to suit your needs.
+            To override select “advance” on the boiler in the kitchen. This will turn the heating
+            back on or off as necessary. The boiler will respond immediately but will revert later
+            to the pre-set programmes. Please do not alter any other settings on the boiler.
+          </p>
+
+          <h3>Phone / tablet charging</h3>
+          <p>
+            There are USB charging outlets in the power socket to the left of the front window in
+            the lounge.
+          </p>
+
+          <div class="callout" style="margin-top: 12px">
+            <strong>Appliance guide</strong>
+            <p class="small" style="margin-bottom: 0">
+              Detailed appliance instructions are in the
+              <strong>blue folder titled “Purley Dene – Appliance Guide”</strong>
+              .
+            </p>
+          </div>
+
+          <h3>Barbecue</h3>
+          <p>Enjoy the barbecue but please leave it clean and tidy.</p>
+          <ul class="list">
+            <li>Dispose of used coals and ash in the metal bin.</li>
+            <li>
+              Spare charcoal, lighting fluid, utensils, cleaning brush etc. are stored with the
+              fire-tray and grill in the green and brown storage box on the patio. For safety
+              reasons please keep this locked. The key to the padlock can be found with the house
+              keys.
+            </li>
+          </ul>
+        </section>
+
+        <!-- SECTION 4 -->
+        <section id="things" class="print-break">
+          <h2>
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 1 1 18 0Z"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M12 10.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                />
+              </svg>
+            </span>
+            Section 4 — Things to Do
+          </h2>
+
+          <h3>Games room</h3>
+          <p>
+            We hope you and your family enjoy our games room. We store the darts and snooker balls
+            on the high shelf, out of reach of small children. Please ensure they are returned to
+            the same place.
+          </p>
+
+          <h3>Books</h3>
+          <p>
+            Please feel free to browse the “library” and exchange any of the paperbacks with your
+            own.
+          </p>
+
+          <h3>Fibre Internet (Wi‑Fi)</h3>
+          <div class="callout">
+            <strong>Wi‑Fi details</strong>
+            <p class="small" style="margin-bottom: 0">
+              Fast internet is provided. Wi‑Fi connection network information is displayed on the
+              Wi‑Fi repeaters, including a QR code to help you connect.
+            </p>
+          </div>
+          <p class="small">
+            If you are unable to connect try restarting both the router and your device.
+          </p>
+
+          <h3>Shopping</h3>
+          <p>
+            There is a local supermarket just a few minutes walk away in Coast Drive. There is a
+            Co-op in Littlestone Road and a Sainsbury in New Romney.
+          </p>
+          <p>
+            New Romney High Street is where you will also find a small library and a good mixture of
+            shops.
+          </p>
+
+          <h3>Television</h3>
+          <p>The TV provides access to free UK TV and streaming services.</p>
+
+          <h3>Out and About</h3>
+          <p>There are many local attractions.</p>
+
+          <p>You might find something of interest in the leaflets in the lounge.</p>
+          <h3>Tides and the Beach</h3>
+          <p>
+            The beach directly behind the house is sandy at low tide and ideal for walking and
+            sandcastles. As the tide comes in, the sand is gradually covered the sea often reaching
+            the shingle.
+          </p>
+          <p>
+            If you are planning time on the sand, we recommend checking the local high-water time.
+            High water at Greatstone is a few minutes after high water Dungeness.
+          </p>
+          <!-- SCREEN VERSION -->
+          <div class="callout screen-only tide-panel">
+            <strong>Check tide times for today and the week ahead</strong>
+            <p class="small">
+              The tide times at Greatstone are only a few minutes later than tides at Dungeness.
+            </p>
+
+            <a
+              class="tide-link"
+              href="https://www.bbc.co.uk/weather/coast-and-sea/tide-tables/9/87"
+              target="_blank"
+              rel="noopener"
+            >
+              View live tide times (BBC)
+            </a>
+          </div>
+
+          <!-- PRINT VERSION -->
+          <div class="callout print-only qr-callout">
+            <div class="qr-text">
+              <strong>Check tide times for today and the week ahead</strong>
+              <p class="small" style="margin-bottom: 0">
+                The tide times at Greatstone are only a few minutes later than tides at Dungeness.
+                <br />
+                Scan this QR code for live tide times (BBC).
+              </p>
+            </div>
+
+            <img
+              src="qr-code-tides.svg"
+              alt="QR code linking to BBC tide tables for Greatstone"
+              class="qr-img"
+            />
+          </div>
+
+          <h3>Romney, Hythe &amp; Dymchurch Railway</h3>
+          <p>
+            The Romney, Hythe &amp; Dymchurch Railway is a unique miniature steam railway and well
+            worth a visit. Littlestone Road station is convenient and makes a good starting point.
+          </p>
+          <p>Trains run to Dungeness (including the Old Lighthouse), Dymchurch and Hythe.</p>
+          <h3>Eating Out</h3>
+          <p>
+            The Ship Inn in New Romney offers good, traditional pub food. There are several
+            restaurants in New Romney, as well as a popular Greek restaurant in Greatstone.
+          </p>
+          <p>Indian and Chinese takeaways are also available locally.</p>
+          <h3>Days Out</h3>
+          <p>
+            There are excellent days out within easy reach, including the castles at Bodiam and
+            Dover, the picturesque town of Rye, and the increasingly quirky seaside town of
+            Folkestone.
+          </p>
+          <p>For shopping, the designer outlet stores at Ashford are also popular.</p>
+          <h3>Walks and the Marsh</h3>
+          <p>
+            The Romney Marsh offers delightful walks, quiet lanes and traditional country pubs. From
+            the house you can walk along the beach, through the dunes or along the sea wall.
+          </p>
+          <p>
+            From the front of the house there are also walks through woodland and across fields
+            towards New Romney.
+          </p>
+        </section>
+
+        <footer class="screen-only">
+          <p>Tip: you can print this page or save it as a PDF from the button at the top.</p>
+        </footer>
+
+        <footer class="print-only">
+          <p>Please return this guide to the kitchen worktop for the next visitors.</p>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>
