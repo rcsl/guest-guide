@@ -412,12 +412,28 @@
         :root {
           --shadow: none;
         }
+        /* Lock print typography so Chrome stops inflating things */
         body {
-          font-size: 11pt;
+          font-family: Arial, Helvetica, sans-serif !important;
+          font-size: 10.5pt !important;
+          line-height: 1.35 !important;
+          padding-bottom: 18mm !important; /* room for the fixed footer */
         }
         .wrap {
           max-width: none;
           padding: 0;
+        }
+        h3 {
+          break-after: avoid;
+          page-break-after: avoid;
+        }
+        h3 + p {
+          break-before: avoid;
+          page-break-before: avoid;
+        }
+        .no-break {
+          break-inside: avoid;
+          page-break-inside: avoid;
         }
         header,
         section {
@@ -428,61 +444,115 @@
         }
 
         nav.toc,
-        .no-print,
-        .screen-only {
+        .no-print {
           display: none !important;
         }
-        .print-only {
-          display: block !important;
-        }
+      }
 
-        header {
-          padding: 0 0 8mm;
-          border-bottom: 1px solid #000;
-          margin-bottom: 6mm;
-        }
+      header {
+        padding: 0 0 8mm;
+        border-bottom: 1px solid #000;
+        margin-bottom: 6mm;
+      }
+      .card,
+      .callout,
+      .danger {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
 
-        section {
-          margin: 0;
-          padding: 0;
-          break-inside: avoid;
-        }
+      .grid {
+        break-inside: auto;
+      }
 
-        section + section {
-          margin-top: 8mm;
-        }
+      section {
+        margin: 0;
+        padding: 0;
+        break-inside: avoid;
+      }
 
-        /* Start each main section on a new page */
-        section.print-break {
-          break-before: page;
-        }
+      section + section {
+        margin-top: 8mm;
+      }
 
-        /* Make links usable on paper */
-        a {
-          color: #000;
-          text-decoration: none;
-        }
-        a[href^="http"]:after {
-          content: " (" attr(href) ")";
-          font-size: 9pt;
-          font-weight: normal;
-        }
+      /* Start each main section on a new page */
+      section.print-break {
+        break-before: page;
+      }
 
-        /* Keep headings with following content */
-        h2,
-        h3 {
-          break-after: avoid;
-        }
+      /* Make links usable on paper */
+      a {
+        color: #000;
+        text-decoration: none;
+      }
+      a[href^="http"]:after {
+        content: " (" attr(href) ")";
+        font-size: 9pt;
+        font-weight: normal;
+      }
+      p {
+        margin: 5pt 0 !important;
+      }
 
-        /* A4 margins */
-        @page {
-          size: A4;
-          margin: 14mm;
-        }
+      /* Keep headings with following content */
+      h1 {
+        font-size: 18pt !important;
+      }
+      h2 {
+        font-size: 14pt !important;
+      }
+      h3 {
+        font-size: 11.5pt !important;
+      }
+      h2,
+      h3 {
+        break-after: avoid;
+      }
 
-        /* Bin icons a touch smaller on paper */
-        .bin-card img {
-          width: 70px;
+      /* A4 margins */
+      @page {
+        size: A4;
+        margin-top: 1.3cm;
+        margin-right: 1cm;
+        margin-bottom: 1.8cm;
+        margin-left: 1cm;
+      }
+
+      /* Bin icons a touch smaller on paper */
+      .bin-card img {
+        width: 70px;
+      }
+
+      .fire-callout {
+        padding: 20px;
+        border-width: 2px;
+      }
+
+      .fire-main {
+        text-align: center;
+        padding: 14px 12px 18px;
+      }
+
+      .fire-title {
+        display: block;
+        font-size: 22px;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+        margin-bottom: 12px;
+      }
+
+      .fire-action {
+        font-size: 18px;
+        font-weight: 700;
+        margin: 10px 0;
+      }
+
+      @media print {
+        .fire-title {
+          font-size: 20pt;
+        }
+        .fire-action {
+          font-size: 14pt;
         }
       }
     </style>
@@ -701,16 +771,18 @@
             Section 1 — Emergencies
           </h2>
 
-          <div class="danger">
-            <p style="margin-top: 0">
-              <strong>🚨 IN CASE OF FIRE</strong>
-              <br />
-              Leave the property immediately.
-              <br />
-              Call
-              <strong>999</strong>
-              and ask for the Fire Service.
-            </p>
+          <div class="danger fire-callout">
+            <div class="fire-main">
+              <strong class="fire-title">🚨 IN CASE OF FIRE</strong>
+
+              <p class="fire-action">Leave the property immediately</p>
+
+              <p class="fire-action">
+                Call
+                <strong>999</strong>
+                and ask for the Fire Service
+              </p>
+            </div>
 
             <div class="kv">
               <div class="row">
@@ -722,9 +794,9 @@
 
           <h3>Fire safety</h3>
           <p>
-            Smoke, CO and heat detectors are installed and are tested regularly. You can test them
-            yourself by pressing and holding the alarm. All units should sound. Please alert the
-            agent if this is not the case.
+            Smoke, CO and heat detectors are installed and are tested regularly. If you test them,
+            by pressing and holding the test button, all units should sound. Please alert the agent
+            if this is not the case.
           </p>
           <p>
             If alarms sound please investigate the source. If there is a fire, follow the
@@ -734,8 +806,8 @@
 
           <h3>No smoking, vaping or candles</h3>
           <p>
-            By law smoking is not allowed in any part of the house. Vaping and candles and naked
-            flames are also banned for safety reasons.
+            By law smoking is not allowed in any part of the house. Vaping, candles and naked flames
+            are also banned for safety reasons.
           </p>
           <h3>Emergency Lighting</h3>
 
@@ -790,8 +862,8 @@
             <strong>Local information</strong>
             <p class="small" style="margin-bottom: 0">
               The post code of the house is
-              <strong>TN28 8NR</strong>
-              . For waste &amp; recycling collection dates, see the link in Section 2.
+              <strong>TN28 8NR.</strong>
+              For waste &amp; recycling collection dates, see the link in Section 2.
             </p>
           </div>
         </section>
@@ -829,7 +901,7 @@
             Domestic waste and recycling collections occur early on
             <strong>Monday morning</strong>
             (often as early as
-            <strong>7.00am</strong>
+            <strong>7 am</strong>
             in summer) on a fortnightly rota. Food waste is collected weekly.
           </p>
           <p>
@@ -861,62 +933,46 @@
             <img src="qr-code-bins.svg" alt="Bin collection schedule QR code" class="qr-img" />
           </div>
           <h3>Which container for what?</h3>
-          <div class="grid four">
-            <div class="card bin-card">
-              <img src="recycling-bin.png" alt="Recycling bin" />
-              <p class="label">Recycling</p>
-              <p class="hint">Glass, plastics, tins, cartons, clean foil</p>
-            </div>
-            <div class="card bin-card">
-              <img src="general-waste-bin.png" alt="General waste bin" />
-              <p class="label">General waste</p>
-              <p class="hint">Non-recycling + plastic bags, cling film</p>
-            </div>
-            <div class="card bin-card">
-              <img src="food-caddy.png" alt="Food waste caddy" />
-              <p class="label">Food waste</p>
-              <p class="hint">Cooked or uncooked (no plastic bags)</p>
-            </div>
-            <div class="card bin-card">
-              <img src="paper-box.png" alt="Paper and card box" />
-              <p class="label">Paper &amp; card</p>
-              <p class="hint">Clean paper and cardboard</p>
-            </div>
-          </div>
-
-          <table aria-label="Waste and recycling table">
+          <table class="waste-table">
             <thead>
               <tr>
-                <th>Contents</th>
+                <th>Bin</th>
+                <th>What goes in it</th>
                 <th>Collected</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>
-                  <strong>Food waste</strong>
-                  – cooked or uncooked (no plastic bags or sacks)
+                <td class="bin-cell">
+                  <img src="food-caddy.png" alt="" />
+                  Food waste
                 </td>
+                <td>Cooked or uncooked food (no plastic bags)</td>
                 <td>Every week</td>
               </tr>
               <tr>
-                <td>
-                  <strong>Non-recycling</strong>
-                  – items that cannot go in any other bins including plastic bags and cling film
+                <td class="bin-cell">
+                  <img src="recycling-bin.png" alt="" />
+                  Recycling
                 </td>
-                <td>Non-recycling week (see calendar)</td>
+                <td>Glass, plastics, tins, cartons, clean foil</td>
+                <td>Recycling week</td>
               </tr>
               <tr>
-                <td>
-                  <strong>Mixed recycling</strong>
-                  – glass bottles and jars; plastic containers; tins and cans; TetraPak cartons;
-                  clean foil
+                <td class="bin-cell">
+                  <img src="paper-box.png" alt="" />
+                  Paper &amp; card
                 </td>
-                <td>Recycling week (see calendar)</td>
+                <td>Clean paper and cardboard</td>
+                <td>Recycling week</td>
               </tr>
               <tr>
-                <td><strong>Paper and card</strong></td>
-                <td>Recycling week (see calendar)</td>
+                <td class="bin-cell">
+                  <img src="general-waste-bin.png" alt="" />
+                  General waste
+                </td>
+                <td>Non-recyclable waste, plastic bags, cling film</td>
+                <td>Non-recycling week</td>
               </tr>
             </tbody>
           </table>
@@ -986,14 +1042,6 @@
             </div>
           </div>
 
-          <h3>Fire safety</h3>
-          <p>
-            The house is equipped with a smoke detector, Carbon Monoxide detector and a fire
-            blanket. The detectors are located in accordance with manufacturers recommendations; the
-            smoke detector above the stairs and the carbon monoxide detector high on the wall in the
-            kitchen close to the door. The fire blanket is on the wall alongside the fridge.
-          </p>
-
           <h3>Dishwasher</h3>
           <p>
             If you can avoid putting the sharp knives and the non stick pans in the dishwasher we
@@ -1004,27 +1052,33 @@
           <p>
             All hot water is instant and, apart from the shower, comes from the combination boiler.
           </p>
-
+          <p>
+            The power to the shower can be turned off using a pull-switch just inside the bathroom
+            door. An indicator light glows when on.
+          </p>
           <h3>Heating</h3>
           <p>
-            The thermostat in the living room controls the temperature, adjust to suit your needs.
-            To override select “advance” on the boiler in the kitchen. This will turn the heating
-            back on or off as necessary. The boiler will respond immediately but will revert later
-            to the pre-set programmes. Please do not alter any other settings on the boiler.
+            Heating is controlled by a schedule that maintains certain temperatures throughout the
+            day and night.
           </p>
+          <p>
+            The thermostat on the wall in the living room controls the temperature, adjust to suit
+            your needs. The temperature you set will override the scheduled setting until the next
+            programmed change.
+          </p>
+          <p>Please do not alter any settings on the boiler.</p>
 
           <h3>Phone / tablet charging</h3>
           <p>
-            There are USB charging outlets in the power socket to the left of the front window in
-            the lounge.
+            There are USB charging outlets in two of the power sockets in the living room. One to
+            the left of the front window and the other below the opening from the kitchen.
           </p>
 
           <div class="callout" style="margin-top: 12px">
             <strong>Appliance guide</strong>
             <p class="small" style="margin-bottom: 0">
               Detailed appliance instructions are in the
-              <strong>blue folder titled “Purley Dene – Appliance Guide”</strong>
-              .
+              <strong>blue folder titled “Purley Dene – Appliance Guide.”</strong>
             </p>
           </div>
 
@@ -1034,9 +1088,9 @@
             <li>Dispose of used coals and ash in the metal bin.</li>
             <li>
               Spare charcoal, lighting fluid, utensils, cleaning brush etc. are stored with the
-              fire-tray and grill in the green and brown storage box on the patio. For safety
-              reasons please keep this locked. The key to the padlock can be found with the house
-              keys.
+              fire-tray and grill in the storage box located between the shed and the barbecue. For
+              safety reasons please keep this locked. The key to the padlock can be found with the
+              other house keys.
             </li>
           </ul>
         </section>
@@ -1063,34 +1117,35 @@
           </h2>
 
           <h3>Games room</h3>
-          <p>
-            We hope you and your family enjoy our games room. We store the darts and snooker balls
-            on the high shelf, out of reach of small children. Please ensure they are returned to
-            the same place.
-          </p>
+          <p>We hope you and your family enjoy our games room. Please leave it clean and tidy.</p>
 
           <h3>Books</h3>
           <p>
-            Please feel free to browse the “library” and exchange any of the paperbacks with your
+            Please feel free to browse our “library” and exchange any of the paperbacks with your
             own.
           </p>
 
-          <h3>Fibre Internet (Wi‑Fi)</h3>
-          <div class="callout">
-            <strong>Wi‑Fi details</strong>
-            <p class="small" style="margin-bottom: 0">
-              Fast internet is provided. Wi‑Fi connection network information is displayed on the
-              Wi‑Fi repeaters, including a QR code to help you connect.
-            </p>
+          <h3>Fibre Internet (Wi-Fi)</h3>
+
+          <div class="media-block">
+            <img src="wifi-unit.png" alt="Wi-Fi unit used in the house" class="media-img" />
+
+            <div>
+              <p>
+                Fast internet is provided throughout the house using Wi-Fi units in the lounge and
+                upstairs.
+              </p>
+              <p class="small" style="margin-bottom: 0">
+                To connect, scan the QR code shown on the Wi-Fi unit or use the network details
+                provided. Please leave the units plugged in at all times.
+              </p>
+            </div>
           </div>
-          <p class="small">
-            If you are unable to connect try restarting both the router and your device.
-          </p>
 
           <h3>Shopping</h3>
           <p>
-            There is a local supermarket just a few minutes walk away in Coast Drive. There is a
-            Co-op in Littlestone Road and a Sainsbury in New Romney.
+            There is a small local supermarket just a few minutes' walk away in Coast Drive. There
+            is a Co-op in Littlestone Road and a Sainsbury in New Romney.
           </p>
           <p>
             New Romney High Street is where you will also find a small library and a good mixture of
@@ -1101,18 +1156,18 @@
           <p>The TV provides access to free UK TV and streaming services.</p>
 
           <h3>Out and About</h3>
-          <p>There are many local attractions.</p>
+          <p>There are many local attractions within easy reach of the house.</p>
 
           <p>You might find something of interest in the leaflets in the lounge.</p>
           <h3>Tides and the Beach</h3>
           <p>
             The beach directly behind the house is sandy at low tide and ideal for walking and
-            sandcastles. As the tide comes in, the sand is gradually covered the sea often reaching
-            the shingle.
+            sandcastles. As the tide comes in, the sand is gradually covered with the sea often
+            reaching the shingle.
           </p>
           <p>
-            If you are planning time on the sand, we recommend checking the local high-water time.
-            High water at Greatstone is a few minutes after high water Dungeness.
+            If you are planning time on the sand or in the sea we recommend checking the local
+            high-water time.
           </p>
           <!-- SCREEN VERSION -->
           <div class="callout screen-only tide-panel">
@@ -1148,13 +1203,15 @@
               class="qr-img"
             />
           </div>
-
-          <h3>Romney, Hythe &amp; Dymchurch Railway</h3>
-          <p>
-            The Romney, Hythe &amp; Dymchurch Railway is a unique miniature steam railway and well
-            worth a visit. Littlestone Road station is convenient and makes a good starting point.
-          </p>
-          <p>Trains run to Dungeness (including the Old Lighthouse), Dymchurch and Hythe.</p>
+          <div class="no-break">
+            <h3>Romney, Hythe &amp; Dymchurch Railway</h3>
+            <p>
+              The Romney, Hythe &amp; Dymchurch Railway is a unique miniature steam railway and well
+              worth a visit. The station on Littlestone Road is convenient and makes a good starting
+              point.
+            </p>
+            <p>Trains run to Dungeness (including the Old Lighthouse), Dymchurch and Hythe.</p>
+          </div>
           <h3>Eating Out</h3>
           <p>
             The Ship Inn in New Romney offers good, traditional pub food. There are several
@@ -1165,7 +1222,7 @@
           <p>
             There are excellent days out within easy reach, including the castles at Bodiam and
             Dover, the picturesque town of Rye, and the increasingly quirky seaside town of
-            Folkestone.
+            Folkestone, Port Lympne Safari Park near Hythe, or the Rare Breeds Centre near Ashford.
           </p>
           <p>For shopping, the designer outlet stores at Ashford are also popular.</p>
           <h3>Walks and the Marsh</h3>
@@ -1180,12 +1237,28 @@
         </section>
 
         <footer class="screen-only">
-          <p>Tip: you can print this page or save it as a PDF from the button at the top.</p>
+          <p>Tip: you can print this guide or save it as a PDF from the button at the top.</p>
         </footer>
 
         <footer class="print-only">
           <p>Please return this guide to the kitchen worktop for the next visitors.</p>
+          <p class="small muted" style="margin-top: 6pt">Revised: February 2026</p>
         </footer>
+        <section id="changelog" class="print-only print-break">
+          <h2>Change log</h2>
+
+          <p class="small">
+            <strong>February 2026</strong>
+            <br />
+            – General content review and update
+            <br />
+            – Waste and recycling information updated and clarified
+            <br />
+            – Wi-Fi information updated
+            <br />
+            – Minor corrections and typographical fixes
+          </p>
+        </section>
       </main>
     </div>
   </body>
